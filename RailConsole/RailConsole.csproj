@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>e61f7ea3-5440-4df0-a465-55c543c2e4f7</ProjectGuid>
+    <ProjectGuid>{3FDE0E84-C9F1-405F-A8B0-2D09FA451755}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RailConsole</RootNamespace>
