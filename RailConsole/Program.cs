@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RailModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace RailConsole
     {
         static void Main(string[] args)
         {
+           RailDAL test = new RailDAL();
+           test.GetAllStations();
         }
     }
 }
