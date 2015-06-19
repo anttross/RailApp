@@ -18,7 +18,7 @@ namespace RailConsole
             
            // List<string> l = new List<string>();
 
-            DataTable allStations = RoutSearch.GetRoute("עתלית", "לוד");
+            DataTable allStations = RoutSearch.GetRoute("BB", "D");
             for (int i = 0; i < allStations.Rows.Count; i++)
                 Debug.WriteLine(allStations.Rows[i][0].ToString());
     

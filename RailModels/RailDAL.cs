@@ -25,9 +25,9 @@ namespace RailModels
             return StoredProcedure("GetAllStationsByLine", line, null);
         }
 
-        public static DataTable GetLineByStation(string station)
+        public static DataTable GetLineByStation(string station, string line)
         {
-            return StoredProcedure("GetLineByStation", null, station);
+            return StoredProcedure("GetLineByStation", line, station);
         }
 
        
