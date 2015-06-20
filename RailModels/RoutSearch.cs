@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 
+using System.Diagnostics;
 
 namespace RailModels
 {
@@ -19,7 +20,7 @@ namespace RailModels
             dtArr = RailDAL.GetLineByStation(arriv, null);
             DataTable dtDep = new DataTable();
             dtDep = RailDAL.GetLineByStation(depart, null);
- 
+
             // same line?
             for (int i = 0; i < dtArr.Rows.Count; i++)
                 for (int j = 0; j < dtDep.Rows.Count; j++)
@@ -44,21 +45,16 @@ namespace RailModels
 
             for (int j = 0; j < dtArrLines.Rows.Count; j++)
             {
-                string lll = dtArrLines.Rows[j][0].ToString();
                 dtDepMid = RailDAL.GetStationsByLine(dtArrLines.Rows[j][0].ToString());
                 for (int i = 0; i < dtDepMid.Rows.Count; i++)
                 {
-                    //if (i == 0 && (bool)dtDepMid.Rows[i][2] && i < dtDepMid.Rows.Count)
-                    //    i++;
-                    if ((bool)dtDepMid.Rows[i][2])
+                    if ((bool)dtDepMid.Rows[i][2] && dtDepMid.Rows[i][0].ToString() != arriv)
                     {
-                        GetRoute(arriv, dtDepMid.Rows[i][0].ToString());
                         dtRes = Combain(dtRes, GetRoute(arriv, dtDepMid.Rows[i][0].ToString()));
-                        GetRoute(dtDepMid.Rows[i][0].ToString(), depart);
                         dtRes = Combain(dtRes, GetRoute(dtDepMid.Rows[i][0].ToString(), depart));
-                        //return dtRes;
+                        return dtRes;
                     }
-                } return dtRes;
+                } //return dtRes;
             }
             return dtRes;
         }
@@ -66,9 +62,10 @@ namespace RailModels
         private static DataTable Combain(DataTable origin, DataTable additional)
         {
             DataRow dr;
-            if (origin.Rows.Count != 0)
+            if (origin.Rows.Count != 0 && additional.Rows.Count !=0)
             {
-                origin.Rows[origin.Rows.Count - 1][3] = origin.Rows[origin.Rows.Count - 1][3].ToString() + " -> " + additional.Rows[0][3].ToString();
+                if (origin.Rows[origin.Rows.Count - 1][3].ToString() != additional.Rows[0][3].ToString())
+                    origin.Rows[origin.Rows.Count - 1][3] = origin.Rows[origin.Rows.Count - 1][3].ToString() + " -> " + additional.Rows[0][3].ToString();
                 for (int i = 0; i < additional.Rows.Count; i++)
                 {
                     if (origin.Rows[origin.Rows.Count - 1][0].ToString() != additional.Rows[i][0].ToString())
