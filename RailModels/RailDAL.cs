@@ -1,4 +1,12 @@
-﻿using System;
+﻿/**
+ *  Troskunov Anton
+ *  310746482
+ *  
+ *  Railway route finder
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,30 +37,6 @@ namespace RailModels
         {
             return StoredProcedure("GetLineByStation", line, station);
         }
-
-       
-
-        
-        //private List<string> Query(string query)
-        //{
-        //    List<string> l = new List<string>();
-        //    connection.Open();
-
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-        //    using (SqlDataReader reader = command.ExecuteReader())
-        //    {
-        //        int i = 1;
-        //        while (reader.Read())
-        //        {
-        //            l.Add((string)reader[0]);
-        //            i++;
-        //        }
-
-        //    }
-        //    connection.Close();
-        //    return l;
-        //}
 
         private static DataTable StoredProcedure(string procName, string line, string station)
         {

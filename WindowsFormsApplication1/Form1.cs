@@ -1,4 +1,12 @@
-﻿using System;
+﻿/**
+ *  Troskunov Anton
+ *  310746482
+ *  
+ *  Railway route finder
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

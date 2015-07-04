@@ -1,17 +1,38 @@
-﻿using System;
+﻿/**
+ *  Troskunov Anton
+ *  310746482
+ *  
+ *  Railway route finder
+ * 
+
+ *  Test Lines Map
+ *  
+ *          line y
+ *           |
+ *  A---BB---B----line x
+ *           |
+ *        ---C---D---E---line z
+ *           |       
+ *    
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-
 using System.Diagnostics;
+
+
+
 
 namespace RailModels
 {
     public class RoutSearch
     {
-
+        private static int maxStepsIn = 1000;
         public static DataTable GetRoute(string arriv, string depart)
         {
             string line = null;
@@ -39,6 +60,9 @@ namespace RailModels
 
         private static DataTable GetRouteRec(string arriv, string depart, DataTable dtRes)
         {
+            if (maxStepsIn == 0)
+                return dtRes;
+            maxStepsIn--;
             DataTable dtDepMid = new DataTable();
             DataTable dtArrLines = new DataTable();
             dtArrLines = RailDAL.GetLineByStation(arriv, null);
